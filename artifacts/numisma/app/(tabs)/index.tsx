@@ -13,7 +13,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -48,7 +47,6 @@ export default function ScanScreen() {
   const { coins, addCoin } = useCollection();
   const [scanning, setScanning] = useState(false);
   const [scanMode, setScanMode] = useState<ScanMode>("single");
-  const [searchQuery, setSearchQuery] = useState("");
   const [activeLang, setActiveLang] = useState("TR");
 
   const topPad = Platform.OS === "web" ? 67 : insets.top;
@@ -169,28 +167,6 @@ export default function ScanScreen() {
               </Text>
             </Pressable>
           ))}
-        </View>
-
-        {/* Search Bar */}
-        <View style={styles.searchBar}>
-          <Feather name="search" size={16} color="#8B7A6A" />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Q TARA"
-            placeholderTextColor="#8B7A6A"
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-          />
-          <Pressable
-            style={styles.searchBtn}
-            onPress={() => {
-              if (searchQuery.trim()) {
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              }
-            }}
-          >
-            <Text style={styles.searchBtnText}>TOPLU TARA</Text>
-          </Pressable>
         </View>
 
         {/* Scan Mode */}
@@ -444,36 +420,6 @@ const styles = StyleSheet.create({
     fontFamily: "JetBrainsMono_400Regular",
     fontSize: 10,
     color: "#8B7A6A",
-  },
-
-  searchBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#2A241E",
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    marginBottom: 16,
-    gap: 8,
-  },
-  searchInput: {
-    flex: 1,
-    fontFamily: "JetBrainsMono_400Regular",
-    fontSize: 13,
-    color: "#E8DCC8",
-    padding: 0,
-  },
-  searchBtn: {
-    borderLeftWidth: 1,
-    borderLeftColor: "#2A241E",
-    paddingLeft: 10,
-  },
-  searchBtnText: {
-    fontFamily: "JetBrainsMono_400Regular",
-    fontSize: 9,
-    color: "#8B7A6A",
-    letterSpacing: 1,
   },
 
   sectionLabel: {

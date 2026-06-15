@@ -7,7 +7,6 @@ import { Feather } from "@expo/vector-icons";
 import React from "react";
 import { Platform, StyleSheet, View, useColorScheme } from "react-native";
 
-import { useColors } from "@/hooks/useColors";
 
 function NativeTabLayout() {
   return (
@@ -20,12 +19,35 @@ function NativeTabLayout() {
         <Icon sf={{ default: "archivebox", selected: "archivebox.fill" }} />
         <Label>Koleksiyon</Label>
       </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="timeline">
+        <Icon sf={{ default: "clock", selected: "clock.fill" }} />
+        <Label>Zaman</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="chat">
+        <Icon sf={{ default: "bubble.left", selected: "bubble.left.fill" }} />
+        <Label>Sohbet</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="premium">
+        <Icon sf={{ default: "star", selected: "star.fill" }} />
+        <Label>Premium</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="map">
+        <Icon sf={{ default: "map", selected: "map.fill" }} />
+        <Label>Harita</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="auction">
+        <Icon sf={{ default: "hammer", selected: "hammer.fill" }} />
+        <Label>Müzayede</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="about">
+        <Icon sf={{ default: "info.circle", selected: "info.circle.fill" }} />
+        <Label>Hakkında</Label>
+      </NativeTabs.Trigger>
     </NativeTabs>
   );
 }
 
 function ClassicTabLayout() {
-  const colors = useColors();
   const isIOS = Platform.OS === "ios";
 
   return (
@@ -73,6 +95,78 @@ function ClassicTabLayout() {
               <SymbolView name="archivebox" tintColor={color} size={24} />
             ) : (
               <Feather name="archive" size={22} color={color} />
+            ),
+        }}
+      />
+      <Tabs.Screen
+        name="timeline"
+        options={{
+          title: "ZAMAN",
+          tabBarIcon: ({ color }) =>
+            isIOS ? (
+              <SymbolView name="clock" tintColor={color} size={24} />
+            ) : (
+              <Feather name="clock" size={22} color={color} />
+            ),
+        }}
+      />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          title: "SOHBET",
+          tabBarIcon: ({ color }) =>
+            isIOS ? (
+              <SymbolView name="bubble.left" tintColor={color} size={24} />
+            ) : (
+              <Feather name="message-circle" size={22} color={color} />
+            ),
+        }}
+      />
+      <Tabs.Screen
+        name="premium"
+        options={{
+          title: "PREMIUM",
+          tabBarIcon: ({ color }) =>
+            isIOS ? (
+              <SymbolView name="star.fill" tintColor={color} size={24} />
+            ) : (
+              <Feather name="star" size={22} color={color} />
+            ),
+        }}
+      />
+      <Tabs.Screen
+        name="map"
+        options={{
+          title: "HARİTA",
+          tabBarIcon: ({ color }) =>
+            isIOS ? (
+              <SymbolView name="map" tintColor={color} size={24} />
+            ) : (
+              <Feather name="map" size={22} color={color} />
+            ),
+        }}
+      />
+      <Tabs.Screen
+        name="auction"
+        options={{
+          title: "MÜZAYEDE",
+          tabBarIcon: ({ color }) =>
+            isIOS ? (
+              <SymbolView name="hammer.fill" tintColor={color} size={24} />
+            ) : (
+              <Feather name="globe" size={22} color={color} />
+            ),
+        }}
+      />
+      <Tabs.Screen
+        name="about"
+        options={{
+          title: "HAKKINDA",
+          tabBarIcon: ({ color }) =>
+            isIOS ? (
+              <SymbolView name="info.circle" tintColor={color} size={24} />
+            ) : (
+              <Feather name="info" size={22} color={color} />
             ),
         }}
       />
