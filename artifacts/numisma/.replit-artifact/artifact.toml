@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "Numisma AI"
+version = "1.0.0"
+id = "artifacts/numisma"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 25511
+
+[services.development]
+run = "pnpm --filter @workspace/numisma run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/numisma", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/numisma", "run", "serve" ]
+
+[services.env]
+PORT = "25511"
+BASE_PATH = "/"

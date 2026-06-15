@@ -1,15 +1,18 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Numisma Premium API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: coin
+    description: Coin analysis operations
+  - name: revenuecat
+    description: Subscription and payment operations
 paths:
   /healthz:
     get:
@@ -24,6 +27,71 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /coin/analyze:
+    post:
+      operationId: analyzeCoin
+      tags: [coin]
+      summary: Analyze a coin image with AI
+      description: Accepts a base64-encoded image and returns structured numismatic data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CoinImageInput"
+      responses:
+        "200":
+          description: Coin analysis result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CoinAnalysis"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Analysis failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /revenuecat/status:
+    post:
+      operationId: getSubscriptionStatus
+      tags: [revenuecat]
+      summary: Check user subscription status
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserIdInput"
+      responses:
+        "200":
+          description: Subscription status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubscriptionStatus"
+
+  /revenuecat/offerings:
+    get:
+      operationId: getOfferings
+      tags: [revenuecat]
+      summary: Get available subscription packages
+      responses:
+        "200":
+          description: Available packages
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RevenueCatOfferings"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +102,130 @@ components:
       required:
         - status
 
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    CoinImageInput:
+      type: object
+      required:
+        - imageBase64
+        - mimeType
+      properties:
+        imageBase64:
+          type: string
+          description: Base64 encoded image data
+        mimeType:
+          type: string
+          description: Image MIME type (e.g. image/jpeg)
+
+    DesignDetails:
+      type: object
+      properties:
+        obverse:
+          type: string
+        reverse:
+          type: string
+      required:
+        - obverse
+        - reverse
+
+    CoinAnalysis:
+      type: object
+      required:
+        - coinName
+        - era
+        - dateRange
+        - material
+        - emperorOrIssuer
+        - mintPlace
+        - rarityIndex
+        - historicalSignificance
+        - designDetails
+        - authenticityScore
+        - marketValueEstimated
+      properties:
+        coinName:
+          type: string
+        era:
+          type: string
+        dateRange:
+          type: string
+        material:
+          type: string
+        emperorOrIssuer:
+          type: string
+        mintPlace:
+          type: string
+        rarityIndex:
+          type: integer
+          minimum: 1
+          maximum: 10
+        historicalSignificance:
+          type: string
+        designDetails:
+          $ref: "#/components/schemas/DesignDetails"
+        authenticityScore:
+          type: integer
+          minimum: 0
+          maximum: 100
+        marketValueEstimated:
+          type: string
+
+    UserIdInput:
+      type: object
+      required:
+        - userId
+      properties:
+        userId:
+          type: string
+
+    SubscriptionStatus:
+      type: object
+      required:
+        - isPremium
+        - userId
+        - simulationMode
+      properties:
+        isPremium:
+          type: boolean
+        userId:
+          type: string
+        expiresAt:
+          type: ["string", "null"]
+        simulationMode:
+          type: boolean
+
+    RevenueCatPackage:
+      type: object
+      required:
+        - identifier
+        - price
+        - period
+        - description
+      properties:
+        identifier:
+          type: string
+        price:
+          type: string
+        period:
+          type: string
+        description:
+          type: string
+
+    RevenueCatOfferings:
+      type: object
+      required:
+        - packages
+        - connected
+      properties:
+        packages:
+          type: array
+          items:
+            $ref: "#/components/schemas/RevenueCatPackage"
+        connected:
+          type: boolean
