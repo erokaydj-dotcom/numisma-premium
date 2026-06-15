@@ -30,3 +30,8 @@ externalPort = 80
 [[ports]]
 localPort = 26208
 externalPort = 3000
+
+[userenv]
+
+[userenv.shared]
+REVENUECAT_PROJECT_ID = "e53eb2f8"

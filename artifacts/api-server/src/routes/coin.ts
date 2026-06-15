@@ -244,7 +244,7 @@ router.post("/coin/analyze", async (req, res) => {
     const ai = new GoogleGenAI({ apiKey: geminiApiKey });
     const model = ai.models;
     const resp = await model.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-2.5-pro",
       contents: [
         { role: "user", parts: [{ text: COIN_ANALYSIS_PROMPT }] },
         { role: "user", parts: [{ inlineData: { mimeType: mimeType || "image/jpeg", data: imageBase64 } }] },
@@ -450,7 +450,7 @@ router.post("/coins/chat", async (req, res) => {
     const lastMsg = messages[messages.length - 1];
 
     const chat = ai.chats.create({
-      model: "gemini-2.5-flash",
+      model: "gemini-2.5-pro",
       system: systemPrompt,
       history,
     });
