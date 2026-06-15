@@ -26,51 +26,36 @@ function NativeTabLayout() {
 
 function ClassicTabLayout() {
   const colors = useColors();
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
   const isIOS = Platform.OS === "ios";
-  const isWeb = Platform.OS === "web";
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.mutedForeground,
+        tabBarActiveTintColor: "#D4AF37",
+        tabBarInactiveTintColor: "#8B7A6A",
         headerShown: false,
         tabBarStyle: {
           position: "absolute",
-          backgroundColor: isIOS ? "transparent" : colors.background,
+          backgroundColor: "#0D0B07",
           borderTopWidth: 1,
-          borderTopColor: colors.border,
+          borderTopColor: "#2A241E",
           elevation: 0,
-          ...(isWeb ? { height: 84 } : {}),
+          height: 64,
+          paddingBottom: 8,
+          paddingTop: 8,
         },
-        tabBarBackground: () =>
-          isIOS ? (
-            <BlurView
-              intensity={80}
-              tint={isDark ? "dark" : "light"}
-              style={StyleSheet.absoluteFill}
-            />
-          ) : isWeb ? (
-            <View
-              style={[
-                StyleSheet.absoluteFill,
-                { backgroundColor: colors.background },
-              ]}
-            />
-          ) : null,
+        tabBarBackground: () => null,
         tabBarLabelStyle: {
-          fontFamily: "Cinzel_400Regular",
-          fontSize: 10,
-          letterSpacing: 0.5,
+          fontFamily: "JetBrainsMono_400Regular",
+          fontSize: 9,
+          letterSpacing: 1,
         },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "Tara",
+          title: "TARA",
           tabBarIcon: ({ color }) =>
             isIOS ? (
               <SymbolView name="camera.viewfinder" tintColor={color} size={24} />
@@ -82,7 +67,7 @@ function ClassicTabLayout() {
       <Tabs.Screen
         name="collection"
         options={{
-          title: "Koleksiyon",
+          title: "KOLEKSİYON",
           tabBarIcon: ({ color }) =>
             isIOS ? (
               <SymbolView name="archivebox" tintColor={color} size={24} />
