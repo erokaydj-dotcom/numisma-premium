@@ -1,9 +1,11 @@
 import { Feather } from "@expo/vector-icons";
 import React from "react";
 import {
+  Linking,
   Platform,
   Pressable,
   ScrollView,
+  Share,
   StyleSheet,
   Text,
   View,
@@ -186,7 +188,14 @@ export default function AboutScreen() {
       </View>
 
       {/* CTA */}
-      <Pressable style={styles.cta}>
+      <Pressable
+        style={({ pressed }) => [styles.cta, pressed && { opacity: 0.8 }]}
+        onPress={() =>
+          Linking.openURL(
+            "https://play.google.com/store/search?q=numisma+ai&c=apps"
+          )
+        }
+      >
         <Text style={styles.ctaText}>GOOGLE PLAY'DE İNCELE</Text>
       </Pressable>
 
@@ -215,15 +224,30 @@ export default function AboutScreen() {
 
       {/* Links */}
       <View style={styles.links}>
-        <Pressable style={styles.linkBtn}>
+        <Pressable
+          style={({ pressed }) => [styles.linkBtn, pressed && { opacity: 0.7 }]}
+          onPress={() => Linking.openURL("https://numisma.ai")}
+        >
           <Feather name="globe" size={16} color="#D4AF37" />
           <Text style={styles.linkText}>Web Sitesi</Text>
         </Pressable>
-        <Pressable style={styles.linkBtn}>
+        <Pressable
+          style={({ pressed }) => [styles.linkBtn, pressed && { opacity: 0.7 }]}
+          onPress={() => Linking.openURL("mailto:numisma@ai.com")}
+        >
           <Feather name="mail" size={16} color="#D4AF37" />
           <Text style={styles.linkText}>E-posta</Text>
         </Pressable>
-        <Pressable style={styles.linkBtn}>
+        <Pressable
+          style={({ pressed }) => [styles.linkBtn, pressed && { opacity: 0.7 }]}
+          onPress={() =>
+            Share.share({
+              title: "Numisma AI",
+              message:
+                "Numisma AI — Antik sikke analizi ve koleksiyon yönetimi uygulaması. Google Gemini 2.5 Pro ile desteklenmiştir. https://numisma.ai",
+            })
+          }
+        >
           <Feather name="share-2" size={16} color="#D4AF37" />
           <Text style={styles.linkText}>Uygulamayı Paylaş</Text>
         </Pressable>
