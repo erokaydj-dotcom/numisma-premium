@@ -102,6 +102,7 @@ function ClassicTabLayout() {
         name="timeline"
         options={{
           title: "ZAMAN",
+          href: null,
           tabBarIcon: ({ color }) =>
             isIOS ? (
               <SymbolView name="clock" tintColor={color} size={24} />
@@ -150,6 +151,7 @@ function ClassicTabLayout() {
         name="auction"
         options={{
           title: "MÜZAYEDE",
+          href: null,
           tabBarIcon: ({ color }) =>
             isIOS ? (
               <SymbolView name="hammer.fill" tintColor={color} size={24} />

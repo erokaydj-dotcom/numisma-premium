@@ -26,10 +26,10 @@ import { identifyCoin } from "@/utils/coinIdentifier";
 const { width } = Dimensions.get("window");
 
 const FLAGS = [
-  { code: "TR", flag: "🇹🇷", label: "Türkçe" },
-  { code: "EN", flag: "🇬🇧", label: "English" },
-  { code: "AR", flag: "🇸🇦", label: "العربية" },
-  { code: "RU", flag: "🇷🇺", label: "Русский" },
+  { code: "TR", flag: "🇹🇷", label: "Türkiye" },
+  { code: "EN", flag: "🇬🇧", label: "İngiltere" },
+  { code: "AR", flag: "🇸🇦", label: "Suudi Arabistan" },
+  { code: "RU", flag: "🇷🇺", label: "Rusya" },
 ];
 
 const TIPS = [

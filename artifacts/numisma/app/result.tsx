@@ -199,6 +199,60 @@ export default function ResultScreen() {
           </View>
 
           <Text style={[styles.sectionTitle, { color: colors.foreground }]}>
+            Müzayede Fiyatları
+          </Text>
+          <View
+            style={[
+              styles.auctionBox,
+              { backgroundColor: colors.card, borderColor: colors.border },
+            ]}
+          >
+            <View style={styles.auctionRow}>
+              <Text style={[styles.auctionLabel, { color: colors.mutedForeground }]}>
+                Son Satış
+              </Text>
+              <Text style={[styles.auctionValue, { color: colors.primary }]}>
+                {coin.estimatedValue}
+              </Text>
+            </View>
+            <View style={[styles.divider, { backgroundColor: colors.border }]} />
+            <View style={styles.auctionRow}>
+              <Text style={[styles.auctionLabel, { color: colors.mutedForeground }]}>
+                6 Aylık Ort.
+              </Text>
+              <Text style={[styles.auctionValue, { color: colors.foreground }]}>
+                {coin.estimatedValue.replace(/\d[\d,.]*\s*-?\s*\d[\d,.]*/g, (m) => {
+                  const parts = m.split(/\s*-\s*/);
+                  if (parts.length === 2) return parts[0].trim();
+                  return m;
+                })}
+              </Text>
+            </View>
+            <View style={[styles.divider, { backgroundColor: colors.border }]} />
+            <View style={styles.auctionRow}>
+              <Text style={[styles.auctionLabel, { color: colors.mutedForeground }]}>
+                Tahmini
+              </Text>
+              <Text style={[styles.auctionValue, { color: colors.foreground }]}>
+                {coin.estimatedValue}
+              </Text>
+            </View>
+            <View style={[styles.divider, { backgroundColor: colors.border }]} />
+            <View style={styles.auctionRow}>
+              <Text style={[styles.auctionLabel, { color: colors.mutedForeground }]}>
+                En Yüksek
+              </Text>
+              <Text style={[styles.auctionValue, { color: colors.primary }]}>
+                {coin.estimatedValue.replace(/\d[\d,.]*\s*-?\s*\d[\d,.]*/g, (m) => {
+                  const parts = m.split(/\s*-\s*/);
+                  if (parts.length === 2) return parts[1].trim();
+                  return m;
+                })}
+              </Text>
+            </View>
+          </View>
+
+          <Text style={[styles.sectionTitle, { color: colors.foreground }]}>
             Açıklama
           </Text>
           <Text style={[styles.description, { color: colors.mutedForeground }]}>
@@ -375,5 +429,27 @@ const styles = StyleSheet.create({
     fontFamily: "CormorantGaramond_400Regular",
     fontSize: 15,
     lineHeight: 24,
+  },
+  auctionBox: {
+    borderRadius: 14,
+    borderWidth: 1,
+    marginBottom: 24,
+    overflow: "hidden",
+  },
+  auctionRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  auctionLabel: {
+    fontFamily: "Cinzel_400Regular",
+    fontSize: 11,
+    letterSpacing: 0.5,
+  },
+  auctionValue: {
+    fontFamily: "JetBrainsMono_400Regular",
+    fontSize: 13,
   },
 });

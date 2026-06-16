@@ -30,10 +30,18 @@ export default function AboutScreen() {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>HAKKIMIZDA</Text>
+        <Text style={styles.sectionTitle}>YAPIMCI</Text>
         <Text style={styles.para}>
-          Numisma AI, antik sikke koleksiyoncuları için geliştirilmiş, Google
-          Gemini 2.5 Pro destekli, yapay zeka tabanlı bir numismatik uygulamasıdır.
+          <Text style={styles.bold}>Dr. Ahmet Bora</Text>
+          {"\n"}
+          Numizmatik, Epigrafi ve İkonografi Uzmanı
+          {"\n"}
+          20 yıllık Arkeolog
+          {"\n"}
+          {"\n"}
+          Numisma AI, 20 yıllık arkeolojik tecrübemin birikimi olarak
+          hazırlanmış, Google Gemini 2.5 Pro destekli, yapay zeka tabanlı
+          bir numismatik uygulamasıdır.
           {"\n"}
           {"\n"}
           Fotoğraf tabanlı sikke tanımlama, sahte tespiti, darphane haritası,
@@ -114,6 +122,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#E8DCC8",
     lineHeight: 22,
+  },
+  bold: {
+    fontFamily: "Cinzel_600SemiBold",
+    color: "#D4AF37",
   },
   links: {
     marginHorizontal: 16,
