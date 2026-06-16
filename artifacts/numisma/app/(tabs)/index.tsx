@@ -61,17 +61,18 @@ export default function ScanScreen() {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
       allowsEditing: true,
-      aspect: scanMode === "both" ? [1, 1] : [1, 1],
+      aspect: [1, 1],
       quality: 0.9,
+      base64: true,
     });
 
     if (result.canceled) return;
 
-    const imageUri = result.assets[0].uri;
+    const asset = result.assets[0];
     setScanning(true);
 
     try {
-      const coin = await identifyCoin(imageUri);
+      const coin = await identifyCoin(asset.uri, asset.base64 ?? null);
       await addCoin(coin);
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       router.push({ pathname: "/result", params: { id: coin.id } });
@@ -91,15 +92,16 @@ export default function ScanScreen() {
       allowsEditing: true,
       aspect: [1, 1],
       quality: 0.9,
+      base64: true,
     });
 
     if (result.canceled) return;
 
-    const imageUri = result.assets[0].uri;
+    const asset = result.assets[0];
     setScanning(true);
 
     try {
-      const coin = await identifyCoin(imageUri);
+      const coin = await identifyCoin(asset.uri, asset.base64 ?? null);
       await addCoin(coin);
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       router.push({ pathname: "/result", params: { id: coin.id } });

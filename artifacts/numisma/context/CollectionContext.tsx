@@ -18,6 +18,13 @@ export type CoinGrade =
   | "About Uncirculated"
   | "Mint State";
 
+export type AuctionPrice = {
+  house: string;
+  date: string;
+  priceUSD: number;
+  currency: string;
+};
+
 export type Coin = {
   id: string;
   imageUri: string;
@@ -34,6 +41,21 @@ export type Coin = {
   description: string;
   identifiedAt: number;
   isFavorite: boolean;
+  culture?: string;
+  ruler?: string;
+  period?: string;
+  mint?: string;
+  obverse?: string;
+  reverse?: string;
+  historicalContext?: string;
+  gradingNotes?: string;
+  confidenceScore?: number;
+  authenticityScore?: number;
+  verdict?: string;
+  estimatedValueMin?: number;
+  estimatedValueMax?: number;
+  valueCurrency?: string;
+  auctionPrices?: AuctionPrice[];
 };
 
 type CollectionContextType = {
