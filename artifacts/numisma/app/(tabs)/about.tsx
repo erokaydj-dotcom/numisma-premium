@@ -79,14 +79,44 @@ export default function AboutScreen() {
         <Text style={styles.sectionTitle}>YAPIMCI</Text>
         <Text style={styles.para}>
           <Text style={styles.bold}>Dr. Ahmet Bora</Text>
-          {"\n"}Numizmatik, Epigrafi ve İkonografi Uzmanı{"\n"}20 yıllık Arkeolog
-          {"\n\n"}
-          Numisma AI, 20 yıllık arkeolojik tecrübemin birikimi olarak
-          hazırlanmış, Google Gemini 2.5 Pro destekli, yapay zeka tabanlı bir
-          numismatik uygulamasıdır.{"\n\n"}
-          Fotoğraf tabanlı sikke tanımlama, sahte tespiti, darphane haritası,
-          müzayede takibi ve AI danışman hizmetleri sunar.{"\n\n"}
-          Ürün: numisma.ai · Destek: numisma@ai.com
+          {"\n"}Numizmatik · Epigrafi · İkonografi Uzmanı{"\n"}Arkeolog
+        </Text>
+      </View>
+
+      {/* Hakkında */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>HAKKINDA</Text>
+        <Text style={styles.para}>
+          Numisma AI, arkeoloji alanında edinilmiş 20 yıllık bilgi ve tecrübenin
+          ışığında hazırlanmıştır. Antik sikkelerin fotoğraf tabanlı tanımlanması,
+          sahte tespiti, darphane coğrafyası ve müzayede takibini tek çatı altında
+          toplayan bu uygulama; Google Gemini 2.5 Pro yapay zeka altyapısıyla
+          her geçen gün daha doğru ve kapsamlı analizler sunmaktadır.
+        </Text>
+      </View>
+
+      {/* Teşekkür */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>TEŞEKKÜR</Text>
+        <Text style={styles.para}>
+          Uygulamanın yapım ve geliştirme sürecinde desteklerini hiçbir zaman
+          esirgemeyen,{"\n\n"}
+          <Text style={styles.bold}>Hayri Karaca</Text>
+          {",  "}
+          <Text style={styles.bold}>Yusuf Akyol</Text>
+          {"  ve  "}
+          <Text style={styles.bold}>Sarıhanlı Ferhat</Text>
+          {"'a"}{"\n\n"}
+          en içten teşekkürlerimi sunarım. Bu proje sizlerin desteği ve inancı
+          olmadan bu noktaya gelemezdi.
+        </Text>
+      </View>
+
+      {/* İletişim */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>İLETİŞİM</Text>
+        <Text style={styles.para}>
+          Ürün: numisma.ai{"\n"}Destek: numisma@ai.com
         </Text>
       </View>
 
