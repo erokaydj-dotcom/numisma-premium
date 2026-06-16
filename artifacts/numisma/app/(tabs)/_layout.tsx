@@ -127,6 +127,7 @@ function ClassicTabLayout() {
         name="premium"
         options={{
           title: "PREMIUM",
+          href: null,
           tabBarIcon: ({ color }) =>
             isIOS ? (
               <SymbolView name="star.fill" tintColor={color} size={24} />
