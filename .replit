@@ -20,6 +20,10 @@ path = "scripts/post-merge.sh"
 timeoutMs = 20000
 
 [[ports]]
+localPort = 3000
+externalPort = 3002
+
+[[ports]]
 localPort = 8080
 externalPort = 8080
 
@@ -43,3 +47,7 @@ externalPort = 3000
 
 [userenv.shared]
 REVENUECAT_PROJECT_ID = "e53eb2f8"
+EXPO_TOKEN = "0JN3CBt06RLRY8bMdE56EPESHG-K9i5La0RG2MYN"
+
+[nix]
+packages = ["nano"]
